@@ -1,19 +1,16 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Spirit from "./components/Spirit";
-import Stats from "./components/Stats";
+import Stats from "./components/Stats.tsx";
 import Classes from "./components/Classes";
 import Units from "./components/Units";
 import Footer from "./components/Footer";
+import LinksPage from "./components/LinksPage.tsx";
 
-export default function App() {
+function LandingPage() {
   return (
-    <main className="min-h-screen bg-surface selection:bg-tertiary selection:text-white">
+    <>
       <Navbar />
       <Hero />
       <Spirit />
@@ -21,6 +18,17 @@ export default function App() {
       <Classes />
       <Units />
       <Footer />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <main className="min-h-screen bg-surface selection:bg-tertiary selection:text-white">
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/links" element={<LinksPage />} />
+      </Routes>
     </main>
   );
 }
